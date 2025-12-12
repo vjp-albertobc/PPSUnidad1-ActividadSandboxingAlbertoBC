@@ -48,7 +48,6 @@ En el prompt aparece ahora `(.venv)` delante, lo que indica que estoy usando el 
 
 3. Verificación rápida de que se usa el Python del entorno:
 ```bash
-which python
 python --version
 ```
 Esto me asegura que cualquier paquete que instale o ejecute queda dentro de este entorno y no afecta al Python global del sistema.
@@ -61,7 +60,7 @@ Antes de meter nada en sandbox, comprobé que la aplicación funciona de forma n
 python3 src/main_app.py
 ```
 2. Probé varios casos de uso, introduciendo datos por teclado y verificando que la lógica de `lavadero` se ejecutaba correctamente (mensajes esperados, cálculos, etc.).
-![Captura prueba ejecución]()
+![Captura prueba ejecución](files/captura_prueba_ejecucion.png)
 
 
 ## Ejecución en sandbox con Firejail
@@ -95,7 +94,6 @@ firejail --private=./ --whitelist=./src python3 src/main_app.py
 - `--whitelist=./src` garantiza que la carpeta `src` está accesible dentro del sandbox, de forma que el programa puede leer sus archivos.  
 - `python3 src/main_app.py` es el mismo comando que usaba fuera del sandbox, pero ahora se ejecuta con las restricciones de Firejail.
 3. Dentro de este entorno, volví a probar la aplicación introduciendo varios datos, igual que en la ejecución normal, y comprobé que el comportamiento era el mismo (mismas entradas, mismas salidas), pero ahora el proceso estaba aislado del resto de mi sistema Kali.
-![Captura Firejail]()
-![Captura ejecucion en Firejail]()
+![Captura Firejail](files/captura_firejail.png)
 
 
